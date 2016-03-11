@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Asserts/Screnes/Screne00.unity
+- path: Assets/Asserts/Screnes/Screne01.unity
   isLoaded: 1
   isActive: 1

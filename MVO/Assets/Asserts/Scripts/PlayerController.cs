@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
 
     public float moveSpeed;
-    public GameObject bomb;
-    List<GameObject> bombs;
     private Animator animator;
     private Rigidbody2D rb2D;
+    private Vector3 dog;
+
 
 
     // Use this for initialization
@@ -17,33 +18,12 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb2D = GetComponent<Rigidbody2D>();
-        bombs = new List<GameObject>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         Move();
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-
-            if (bombs.Count < 1)
-            {
-                int x = (int)transform.position.x;
-                int y = (int)transform.position.y;
-                Vector3 pos = new Vector3(x, y, 0f);
-                bombs.Add((GameObject)Instantiate(bomb, pos, Quaternion.identity));
-
-            }
-            else
-            {
-                Debug.Log("Only one is allowed");
-            }
-
-            //float x = Mathf.Floor(transform.position.x);
-            //float y = Mathf.Ceil(transform.position.y);
-
-        }
     }
 
     public void Move()
@@ -81,4 +61,6 @@ public class PlayerController : MonoBehaviour
         else if (vertical > 0) { animator.SetBool("PlayerMoveUp", true); }
         else if (vertical < 0) { animator.SetBool("PlayerMoveDown", true); }
     }
+
+
 }
